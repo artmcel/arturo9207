@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { JWTPayload } from '@sisu/shared';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'sisu-super-secret-key-change-in-production';
+const JWT_SECRET = process.env.JWT_SECRET || 'snail-racing-secret-key-change-in-production';
 const JWT_EXPIRES_IN = '7d';
 
 export function generateToken(payload: Omit<JWTPayload, 'iat' | 'exp'>): string {

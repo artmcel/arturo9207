@@ -6,7 +6,7 @@ interface AuthLayoutProps {
   title?: string;
 }
 
-export function AuthLayout({ children, title = 'SISU Carreras de Caracoles' }: AuthLayoutProps) {
+export function AuthLayout({ children, title = 'Carreras de Caracoles' }: AuthLayoutProps) {
   return (
     <div className={styles.authLayout}>
       <header className={styles.authHeader}>
@@ -14,7 +14,7 @@ export function AuthLayout({ children, title = 'SISU Carreras de Caracoles' }: A
       </header>
       <main className={styles.authMain}>{children}</main>
       <footer className={styles.authFooter}>
-        <p>Prueba técnica SISU Technologies</p>
+        <p>Prueba técnica full-stack</p>
       </footer>
     </div>
   );
