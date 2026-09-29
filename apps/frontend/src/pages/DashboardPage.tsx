@@ -12,10 +12,16 @@ export function DashboardPage() {
   const [snailVictories, setSnailVictories] = useState<SnailVictory[]>([]);
 
   useEffect(() => {
-    const savedBets = localStorage.getItem(`sisu_bets_${user?.id}`);
-    if (savedBets) {
+    if (!user?.id) return;
+    const betsKey = `sisu_bets_${user.id}`;
+    const victoriesKey = `sisu_victories_${user.id}`;
+    const savedBets = localStorage.getItem(betsKey);
+    const savedVictories = localStorage.getItem(victoriesKey);
+
+    if (savedBets && savedVictories) {
       try {
         setBetStats(JSON.parse(savedBets));
+        setSnailVictories(JSON.parse(savedVictories));
       } catch {
         generateMockData();
       }
@@ -25,11 +31,12 @@ export function DashboardPage() {
   }, [user?.id]);
 
   const generateMockData = () => {
+    if (!user?.id) return;
     const won = Math.floor(Math.random() * 20) + 5;
     const lost = Math.floor(Math.random() * 15) + 3;
     const stats = { won, lost };
     setBetStats(stats);
-    localStorage.setItem(`sisu_bets_${user?.id}`, JSON.stringify(stats));
+    localStorage.setItem(`sisu_bets_${user.id}`, JSON.stringify(stats));
 
     const raceResults = generateDailyRaceResults();
     const victories = calculateVictories(raceResults);
@@ -39,6 +46,7 @@ export function DashboardPage() {
       victories: victories[snail.id] || 0,
     }));
     setSnailVictories(victoryData);
+    localStorage.setItem(`sisu_victories_${user.id}`, JSON.stringify(victoryData));
   };
 
   return (
