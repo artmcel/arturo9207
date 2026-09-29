@@ -1,5 +1,5 @@
 import { api } from './api';
-import { RegisterRequest, LoginRequest, AuthResponse, ApiResponse } from '@shared/types';
+import { RegisterRequest, LoginRequest, AuthResponse, ApiResponse, UserPublic } from '@shared/types';
 
 export const authService = {
   async register(data: RegisterRequest): Promise<AuthResponse> {
@@ -9,6 +9,11 @@ export const authService = {
 
   async login(data: LoginRequest): Promise<AuthResponse> {
     const response = await api.post<ApiResponse<AuthResponse>>('/auth/login', data);
+    return response.data.data!;
+  },
+
+  async me(): Promise<UserPublic> {
+    const response = await api.get<ApiResponse<UserPublic>>('/auth/me');
     return response.data.data!;
   },
 };

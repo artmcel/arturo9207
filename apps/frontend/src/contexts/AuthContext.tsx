@@ -11,6 +11,7 @@ interface AuthContextType {
   register: (data: { fullName: string; email: string; password: string; confirmPassword: string }) => Promise<void>;
   logout: () => void;
   updateBalance: (amount: number) => void;
+  refreshUser: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -33,6 +34,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       try {
         setToken(storedToken);
         setUser(JSON.parse(storedUser));
+        // Fetch fresh user data from server
+        authService.me().then(freshUser => {
+          localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(freshUser));
+          setUser(freshUser);
+        }).catch(() => {
+          clearAuth();
+        });
       } catch {
         clearAuth();
       }
@@ -53,6 +61,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user));
     setToken(token);
     setUser(user);
+  };
+
+  const refreshUser = async () => {
+    if (!token) return;
+    try {
+      const freshUser = await authService.me();
+      localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(freshUser));
+      setUser(freshUser);
+    } catch {
+      clearAuth();
+    }
   };
 
   const login = async (email: string, password: string) => {
@@ -78,7 +97,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, isAuthenticated: !!token, loading, login, register, logout, updateBalance }}>
+    <AuthContext.Provider value={{ user, token, isAuthenticated: !!token, loading, login, register, logout, updateBalance, refreshUser }}>
       {children}
     </AuthContext.Provider>
   );
