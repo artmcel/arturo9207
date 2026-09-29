@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { authService } from '../services/authService';
-import { RegisterRequestSchema, LoginRequestSchema } from '@shared/types';
+import { RegisterRequestSchema, LoginRequestSchema } from '@sisu/shared';
 import { successResponse, errorResponse } from '../utils/responses';
 
 export const register = async (req: Request, res: Response) => {

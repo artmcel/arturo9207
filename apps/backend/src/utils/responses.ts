@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { ApiResponse } from '@shared/types';
+import { ApiResponse } from '@sisu/shared';
 
 export function successResponse<T>(res: Response, data: T, statusCode = 200): Response {
   const response: ApiResponse<T> = {

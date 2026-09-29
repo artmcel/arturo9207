@@ -1,4 +1,4 @@
-import { User, UserPublic } from '@shared/types';
+import { User, UserPublic } from '@sisu/shared';
 
 class UserModel {
   private users: Map<string, User> = new Map();

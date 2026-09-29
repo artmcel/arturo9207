@@ -1,3 +1,3 @@
-export * from './snailpay';
-export * from './validation';
-export * from './snails';
+export * from './snailpay.js';
+export * from './validation.js';
+export * from './snails.js';

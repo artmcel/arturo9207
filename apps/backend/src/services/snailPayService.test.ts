@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { snailPayService } from '../services/snailPayService';
-import { SnailPayStatus } from '@shared/types';
+import { SnailPayStatus } from '@sisu/shared';
 import {
   SNAILPAY_SUCCESS_CARD,
   SNAILPAY_DECLINED_CARDS,
   SNAILPAY_SYSTEM_ERROR_HEADER,
-} from '@shared/constants';
+} from '@sisu/shared';
 
 describe('SnailPayService', () => {
   const baseRequest = {

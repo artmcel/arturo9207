@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { SnailPayChargeRequest, SnailPayResponse, SnailPayStatus } from '@shared/types';
+import { SnailPayChargeRequest, SnailPayResponse, SnailPayStatus } from '@sisu/shared';
 import {
   SNAILPAY_SUCCESS_CARD,
   SNAILPAY_DECLINED_CARDS,
@@ -7,7 +7,7 @@ import {
   SNAILPAY_ERROR_MESSAGES,
   SNAILPAY_SYSTEM_ERROR_HEADER,
   SNAILPAY_SYSTEM_ERROR_ENV,
-} from '@shared/constants';
+} from '@sisu/shared';
 
 export class SnailPayService {
   private isSystemErrorMode = false;

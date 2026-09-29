@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { userModel } from '../models/user';
 import { hashPassword, verifyPassword } from '../utils/password';
 import { generateToken } from '../utils/jwt';
-import { RegisterRequest, LoginRequest, AuthResponse, UserPublic } from '@shared/types';
+import { RegisterRequest, LoginRequest, AuthResponse, UserPublic } from '@sisu/shared';
 
 export class AuthService {
   async register(data: RegisterRequest): Promise<AuthResponse> {

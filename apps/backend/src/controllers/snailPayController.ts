@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { snailPayService } from '../services/snailPayService';
-import { SnailPayChargeRequestSchema } from '@shared/types';
+import { SnailPayChargeRequestSchema } from '@sisu/shared';
 import { successResponse, errorResponse } from '../utils/responses';
 
 export const charge = async (req: Request, res: Response) => {

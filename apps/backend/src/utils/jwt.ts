@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { JWTPayload } from '@shared/types';
+import { JWTPayload } from '@sisu/shared';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'sisu-super-secret-key-change-in-production';
 const JWT_EXPIRES_IN = '7d';

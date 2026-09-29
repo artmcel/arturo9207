@@ -1,6 +1,7 @@
 {
   "name": "@sisu/shared",
   "version": "1.0.0",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
@@ -14,15 +15,60 @@
       "import": "./dist/types/index.js",
       "require": "./dist/types/index.js"
     },
+    "./types/user": {
+      "types": "./dist/types/user.d.ts",
+      "import": "./dist/types/user.js",
+      "require": "./dist/types/user.js"
+    },
+    "./types/snailpay": {
+      "types": "./dist/types/snailpay.d.ts",
+      "import": "./dist/types/snailpay.js",
+      "require": "./dist/types/snailpay.js"
+    },
+    "./types/dashboard": {
+      "types": "./dist/types/dashboard.d.ts",
+      "import": "./dist/types/dashboard.js",
+      "require": "./dist/types/dashboard.js"
+    },
+    "./types/api": {
+      "types": "./dist/types/api.d.ts",
+      "import": "./dist/types/api.js",
+      "require": "./dist/types/api.js"
+    },
     "./constants": {
       "types": "./dist/constants/index.d.ts",
       "import": "./dist/constants/index.js",
       "require": "./dist/constants/index.js"
     },
+    "./constants/snailpay": {
+      "types": "./dist/constants/snailpay.d.ts",
+      "import": "./dist/constants/snailpay.js",
+      "require": "./dist/constants/snailpay.js"
+    },
+    "./constants/validation": {
+      "types": "./dist/constants/validation.d.ts",
+      "import": "./dist/constants/validation.js",
+      "require": "./dist/constants/validation.js"
+    },
+    "./constants/snails": {
+      "types": "./dist/constants/snails.d.ts",
+      "import": "./dist/constants/snails.js",
+      "require": "./dist/constants/snails.js"
+    },
     "./utils": {
       "types": "./dist/utils/index.d.ts",
       "import": "./dist/utils/index.js",
       "require": "./dist/utils/index.js"
+    },
+    "./utils/formatters": {
+      "types": "./dist/utils/formatters.d.ts",
+      "import": "./dist/utils/formatters.js",
+      "require": "./dist/utils/formatters.js"
+    },
+    "./utils/validation": {
+      "types": "./dist/utils/validation.d.ts",
+      "import": "./dist/utils/validation.js",
+      "require": "./dist/utils/validation.js"
     }
   },
   "scripts": {

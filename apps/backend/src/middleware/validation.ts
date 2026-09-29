@@ -5,11 +5,7 @@ import { errorResponse } from '../utils/responses';
 export const validate = (schema: ZodSchema) =>
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      await schema.parseAsync({
-        body: req.body,
-        query: req.query,
-        params: req.params,
-      });
+      await schema.parseAsync(req.body);
       return next();
     } catch (error) {
       if (error instanceof ZodError) {

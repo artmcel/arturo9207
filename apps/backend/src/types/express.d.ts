@@ -1,4 +1,4 @@
-import { JWTPayload } from '@shared/types';
+import { JWTPayload } from '@sisu/shared';
 
 declare global {
   namespace Express {
