@@ -1,6 +1,6 @@
 import { User, UserPublic } from '@sisu/shared';
 
-class UserModel {
+export class UserModel {
   private users: Map<string, User> = new Map();
 
   async findByEmail(email: string): Promise<User | undefined> {
