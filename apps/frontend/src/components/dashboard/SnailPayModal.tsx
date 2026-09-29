@@ -15,7 +15,7 @@ interface SnailPayModalProps {
 }
 
 export function SnailPayModal({ isOpen, onClose }: SnailPayModalProps) {
-  const { user } = useAuth();
+  const { user, updateBalance } = useAuth();
   const { showSuccess, showError } = useToast();
   const [loading, setLoading] = useState(false);
 
@@ -45,7 +45,9 @@ export function SnailPayModal({ isOpen, onClose }: SnailPayModalProps) {
     try {
       const response = await snailPayService.charge(data);
       if (response.status === 'approved') {
-        showSuccess(`Recarga de ${formatCurrency(data.amount)} aprobada. Nuevo saldo: ${formatCurrency(user.balance + data.amount)}`);
+        const newBalance = user.balance + data.amount;
+        updateBalance(newBalance);
+        showSuccess(`Recarga de ${formatCurrency(data.amount)} aprobada. Nuevo saldo: ${formatCurrency(newBalance)}`);
         reset();
         onClose();
       } else {
